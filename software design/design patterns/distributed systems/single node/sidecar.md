@@ -19,7 +19,25 @@
   - Configuration Synschronization
 
 ![sidecar pattern](./images/sidecar_https_termination.png)
-  
+
+## Designing a good sidecar container
+
+### Parameterize the container
+
+- Allow the container to have its behavior configured by environment variables which can be set by command line or by a configuration file.
+
+### Define the container API
+
+- Define the container's API and what it does
+  - What HTTP endpoints it exposes? And what other HTTP calls it makes to the outside world?
+  - What are the units used in environment variables or HTTP endpoints (if applicable)?
+
+### Document your container
+
+- Using the Dockerfile you can document your container by using:
+  - `LABEL` to add metadata like version, author, etc. (see [OCI Image Specification](https://github.com/opencontainers/image-spec))
+  - `EXPOSE` to declare the ports that the container will use.
+  - `ENV` to declare the environment variables that the container will use and add default values
 
 # References
 
