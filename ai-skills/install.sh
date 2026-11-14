@@ -10,7 +10,7 @@ usage() {
 Usage: ./install.sh [options] [skill ...]
 
 Options:
-  -t, --target NAME   claude | codex | agents  (repeatable, default: claude)
+  -t, --target NAME   claude | codex | agents | gemini | antigravity  (repeatable, default: claude)
   -d, --dir PATH      Install into a custom skills directory (repeatable)
   -c, --copy          Copy files instead of symlinking
   -f, --force         Replace existing skills with the same name
@@ -20,9 +20,11 @@ Options:
 No skill names = install all skills.
 
 Target directories:
-  claude  ~/.claude/skills
-  codex   ~/.codex/skills
-  agents  ~/.agents/skills
+  claude       ~/.claude/skills
+  codex        ~/.codex/skills
+  agents       ~/.agents/skills
+  gemini       ~/.gemini/skills
+  antigravity  ~/.gemini/skills
 USAGE
 }
 
@@ -49,9 +51,10 @@ done
 
 for t in ${targets[@]+"${targets[@]}"}; do
   case "$t" in
-    claude) dirs+=("$HOME/.claude/skills") ;;
-    codex)  dirs+=("$HOME/.codex/skills") ;;
-    agents) dirs+=("$HOME/.agents/skills") ;;
+    claude)                dirs+=("$HOME/.claude/skills") ;;
+    codex)                 dirs+=("$HOME/.codex/skills") ;;
+    agents)                dirs+=("$HOME/.agents/skills") ;;
+    gemini|antigravity)    dirs+=("$HOME/.gemini/skills") ;;
     *) echo "Unknown target: $t" >&2; exit 1 ;;
   esac
 done

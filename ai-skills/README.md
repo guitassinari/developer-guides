@@ -14,6 +14,7 @@ Options:
 
 ```bash
 ./install.sh --target codex                # ~/.codex/skills
+./install.sh --target antigravity          # ~/.gemini/skills
 ./install.sh --target claude --target agents
 ./install.sh --dir ~/some/other/skills     # custom directory
 ./install.sh --copy --force tdd commit     # copy only these, replace existing
